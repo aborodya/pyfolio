@@ -240,7 +240,8 @@ def create_full_tear_sheet(returns,
 
             if market_data is not None:
                 create_capacity_tear_sheet(returns, positions, transactions,
-                                           market_data, daily_vol_limit=0.2,
+                                           market_data,
+                                           liquidation_daily_vol_limit=0.2,
                                            last_n_days=125,
                                            estimate_intraday=False)
 
@@ -440,6 +441,7 @@ def create_simple_tear_sheet(returns,
         plt.setp(ax.get_xticklabels(), visible=True)
 
     plt.show()
+    plt.close(fig)
 
 
 @plotting.customize
@@ -634,6 +636,8 @@ def create_returns_tear_sheet(returns, positions=None,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -730,6 +734,8 @@ def create_position_tear_sheet(returns, positions,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -811,6 +817,8 @@ def create_txn_tear_sheet(returns, positions, transactions,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -902,6 +910,8 @@ def create_round_trip_tear_sheet(returns, positions, transactions,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -979,6 +989,8 @@ def create_interesting_times_tear_sheet(
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -1297,6 +1309,8 @@ def create_bayesian_tear_sheet(returns, benchmark_rets=None,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -1478,6 +1492,8 @@ def create_risk_tear_sheet(positions,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
 
 
 @plotting.customize
@@ -1537,7 +1553,8 @@ def create_perf_attrib_tear_sheet(returns,
 
     # aggregate perf attrib stats and show summary table
     perf_attrib.show_perf_attrib_stats(returns, positions, factor_returns,
-                                       factor_loadings, transactions)
+                                       factor_loadings, transactions,
+                                       pos_in_dollars)
 
     # one section for the returns plot, and for each factor grouping
     # one section for factor returns, and one for risk exposures
@@ -1598,3 +1615,5 @@ def create_perf_attrib_tear_sheet(returns,
     plt.show()
     if return_fig:
         return fig
+    else:
+        plt.close(fig)
